@@ -1,0 +1,50 @@
+<template>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <!-- Modal/Popup Box LWC header here -->
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCancel}>
+                    <lightning-icon icon-name="utility:close"
+                        alternative-text="close"
+                        variant="inverse"
+                        size="small" ></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Account</h2>
+            </header>
+            <!-- Modal/Popup Box LWC body starts here -->
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <lightning-record-form
+                    object-api-name="Account"
+                    layout-type="Full"
+                    columns="2"
+                    record-id={recordId}
+                    onsubmit={handleSubmit}
+                    onsuccess={handleSuccess}
+                    oncancel={handleCancel}>
+                </lightning-record-form>
+
+                <template if:true={similarAccounts}>
+                    <lightning-card  title="Please review the list of similar accounts in Org1">
+                        <lightning-button slot="actions" label="Back" title="Back" onclick={handleBack} class="slds-m-around_xx-small slds-button_neutral"></lightning-button>
+                        <lightning-button slot="actions" variant="brand" label="Create Account Anyway!" title="Create Account Anyway!" onclick={handleSubmitAnyway} class="slds-m-around_xx-small slds-button_brand"></lightning-button>
+                        <p class="slds-p-horizontal_small">
+                            <lightning-datatable
+                                key-field="Id"
+                                data={similarAccounts}
+                                columns={columns}
+                                hide-checkbox-column>
+                            </lightning-datatable>
+                        </p>
+                    </lightning-card>
+
+                </template>
+            </div>
+            <!-- <div class="slds-modal__footer">
+                <lightning-button label="Cancel" title="Cancel" onclick={handleCancel} class="slds-m-around_xx-small slds-align_absolute-center slds-button_neutral"></lightning-button>
+                <lightning-button variant="brand" label="Save" title="Save" onclick={handleSubmit} class="slds-m-around_xx-small slds-align_absolute-center slds-button_brand"></lightning-button>
+            </div> -->
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>

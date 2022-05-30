@@ -1,0 +1,16 @@
+lightning-record-form .lightning-record-form-cancel {
+    display: none;
+}
+
+lightning-record-form .lightning-record-form-submit {
+    display: none;
+}
+
+lightning-record-form .slds-align_absolute-center.slds-p-around_medium {
+    display: none;
+}
+
+.slds-modal__container {
+    max-width: 840px !important;
+    width: 840px !important;
+}

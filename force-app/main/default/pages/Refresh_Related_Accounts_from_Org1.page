@@ -1,0 +1,5 @@
+<apex:page standardController="Account" extensions="RefreshRelatedAccountsController" action="{!RefreshRelatedAccounts}">
+    <script>
+        window.history.back();
+    </script>
+</apex:page>
